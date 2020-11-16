@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="utf-8">
+<title>Formulario para Cálculo del largo de un material enrollado en forma cilíndrica</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/JavaScript">
+<!--
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>
+</head>
+<!-- Si puedes ayudar con alguna donacion para este trabajo y sus mejoras, agradeceriamos muchisimo!
+BOLI: bNLSuupmBhTa9dEeWUkr2RncmBcFaUEXx4
+AREPA: ATMCtobjwQbo31rRWFAUEvUvZXfxU8QYEW
+BTC: 1Kxm5szgwEQRFJCLiCxQFeLGWbF1bckUkc 
+DOGE: DH8bChYVrbC1GfRwYDEmypQVmkGCgMGK4r
+ETH: 0x049a7a6cd08c1a7c65866417b9a9363b89d6db5d
+-->
+<body>
+<script>
+$(document).ready(function () {
+$("#diametro_total").keyup(function () {
+
+  var diametro_total = $(this).val();
+  /*var ancho = 3.2;
+  $("#ancho").val(ancho);*/
+  var ancho = $("#ancho").val();
+  /*var diametro_nucleo = 8.47;
+  $("#diametro_nucleo").val(diametro_nucleo);*/
+  var diametro_nucleo = $("#diametro_nucleo").val();
+  /*var grosor_material = 0.000350144;
+  $("#grosor_material").val(grosor_material);*/
+  var grosor_material = $("#grosor_material").val();
+  var vol_util = (Math.PI*(Math.pow(((diametro_total/100)/2),2))*ancho)-(Math.PI*(Math.pow(((diametro_nucleo/100)/2),2))*ancho);
+  var largo_teorico = vol_util/(ancho*grosor_material);
+  var area = ancho*largo_teorico;
+  
+  $("#volumen_util").text(vol_util);
+  $("#largo_teorico").text(largo_teorico);
+  $("#area").text(area);
+
+  //alert(Math.PI);
+})
+
+$("#perimetro").keyup(function () {
+
+  var perimetro = $(this).val();
+
+  var diam_seg_per = (perimetro/Math.PI);
+  
+  $("#diam_seg_perimetro").text(diam_seg_per);
+
+  //alert(Math.PI);
+})
+
+});
+
+
+</script>
+<p><b>Formulario para Cálculo del largo de un material enroyado en forma cilindrica</b>
+<br>Investigación iniciada el 03 de Mayo de 2019
+<br>Investigador: Ing. Gustavo {Guadarismo@gmail.com}</p>
+<table width="0" border="1">
+ <tr>
+  <td>Ancho</td>
+  <td><input type="number" id="ancho" required="required">Metros</td>
+ </tr>
+ <tr>
+  <td>Grosor del material</td>
+  <td><input type="number" id="grosor_material" required="required">Metros
+   </td>
+ </tr>
+ <tr>
+  <td>Tipo de Material</td>
+  <td><label>
+   <select name="select" size="1">
+     <option value="0.000350144">LONA13#440 Extrafuerte</option>
+     <option value="0.000258691">VINIL BRILLANTE 120 gsm</option>
+     <option value="0.000286513">VINIL BRILLANTE 140 gsm</option>
+   </select>
+  </label></td>
+ </tr>
+ <tr>
+  <td>Diametro Núcleo</td>
+  <td><input type="number" id="diametro_nucleo" required="required">Centímetros</td>
+ </tr>
+  <tr>
+  <td>Diametro Total </td>
+  <td><input type="number" id="diametro_total" required="required">Centímetros</td>
+ </tr>
+  </tr>
+  <tr>
+  <td>Volumen Útil </td>
+  <td><div id="volumen_util">Loading...</div>Metros Cúbicos</td>
+ </tr>
+  <tr>
+  <td>Área</td>
+  <td><div id="area">Loading...</div>Metros Cuadrados</td>
+ </tr>
+  </tr>
+  <tr>
+  <td>Largo Teórico</td>
+  <td><b><div id="largo_teorico">Loading...</div>
+  Metros Lineales</b></td>
+ </tr>
+  </tr>
+  <tr>
+  <td>Perimetro</td>
+  <td><input type="number" id="perimetro"/>Centímetros</td>
+ </tr>
+  </tr>
+  <tr>
+  <td>Diametro Según Perimetro </td>
+  <td><div id="diam_seg_perimetro">Loading...</div> Centímetros</td>
+  </tr>
+</table>
+<br>Si puedes ayudar con alguna donación para este trabajo y sus mejoras, agradeceriamos muchisimo! (compranos unas arepas)
+<br>BTC: 1Kxm5szgwEQRFJCLiCxQFeLGWbF1bckUkc 
+<br>DOGE: DH8bChYVrbC1GfRwYDEmypQVmkGCgMGK4r
+<br>ETH: 0x049a7a6cd08c1a7c65866417b9a9363b89d6db5d
+</body>
+</html>
